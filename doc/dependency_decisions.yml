@@ -28,7 +28,7 @@
   - :who: 
     :why: 
     :versions: []
-    :when: 2023-08-29
+    :when: 2023-08-29 15:35:29.688403000 Z
 - - :permit
   - EDL 1.0
   - :who: 
@@ -47,14 +47,14 @@
     :why: 
     :versions:
     - 1.2.12
-    :when: 2023-08-29
+    :when: 2023-08-29 15:35:29.688403000 Z
 - - :approve
   - logback-classic
   - :who: 
     :why: 
     :versions:
     - 1.2.12
-    :when: 2020-08-29
+    :when: 2020-08-29 15:35:29.688403000 Z
 - - :approve
   - jakarta.xml.bind-api
   - :who: 
