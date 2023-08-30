@@ -105,14 +105,14 @@ pipeline {
         stage('Image Linting') {
           steps {
             container('docker-tools') {
-              sh 'dockle docker.io/xxxxxx/dsodemo'
+              sh 'dockle docker.io/crcedenp/dsodemo'
             }
           }
         }
         stage('Image Scan') {
           steps {
             container('docker-tools') {
-              sh 'trivy image --exit-code 1 xxxxxx/dso-demo'
+              sh 'trivy image --exit-code 1 crcedenp/dsodemo'
               }
           }
         }
