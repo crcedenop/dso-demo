@@ -3,8 +3,11 @@ WORKDIR /app
 COPY . .
 RUN mvn package -DskipTests
 
-FROM openjdk:19-alpine AS run
+
+FROM openjdk:18-alpine AS run
 COPY --from=build /app/target/demo-0.0.1-SNAPSHOT.jar /run/demo.jar
+
+RUN apk add --no-cache curl
 
 ARG USER=devops
 ENV HOME /home/$USER
@@ -12,7 +15,6 @@ RUN adduser -D $USER && \
 chown $USER:$USER /run/demo.jar
 USER $USER
 
-RUN apk add curl
 HEALTHCHECK --interval=30s --timeout=10s --retries=2 --start-period=20s \
     CMD curl -f http://localhost:8080/ || exit 1
 
