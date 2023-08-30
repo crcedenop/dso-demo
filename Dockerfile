@@ -12,9 +12,9 @@ RUN adduser -D $USER && \
 chown $USER:$USER /run/demo.jar
 USER $USER
 
-RUN apk add --no-cache curl
+RUN apk add curl
 HEALTHCHECK --interval=30s --timeout=10s --retries=2 --start-period=20s \
-CMD curl -f http://localhost:8080/ || exit 1
+    CMD curl -f http://localhost:8080/ || exit 1
 
 EXPOSE 8080
 CMD java -jar /run/demo.jar
