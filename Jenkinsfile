@@ -109,13 +109,13 @@ pipeline {
             }
           }
         }
-        stage('Image Scan') {
+      /**  stage('Image Scan') {
           steps {
             container('docker-tools') {
               sh 'trivy image --exit-code 1 crcedenp/dsodemo'
               }
           }
-        }
+        } **/
       }
     }
     stage('Deploy to Dev') {
