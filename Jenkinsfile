@@ -119,6 +119,8 @@ pipeline {
               }
           }
         } **/
+      }
+    }    
     stage('Deploy to Dev') {
       environment {
         AUTH_TOKEN = credentials('argocd-jenkins-deployer-token')
