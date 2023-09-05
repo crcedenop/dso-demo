@@ -114,8 +114,8 @@ pipeline {
             container('docker-tools') {
               sh 'trivy image --exit-code 1 crcedenp/dso-demo'
               }
-          } **/
-        }
+          }
+        } **/
       }
     }
     stage('Deploy to Dev') {
