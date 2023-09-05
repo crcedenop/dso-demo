@@ -25,6 +25,10 @@
 		</dependency>
 
 		<dependency>
+		    <!-- https://mvnrepository.com/artifact/org.yaml/snakeyaml -->
+			<groupId>org.yaml</groupId>
+			<artifactId>snakeyaml</artifactId>
+			<version>1.32</version>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
@@ -47,9 +51,9 @@
 				<groupId>org.owasp</groupId>
 				<artifactId>dependency-check-maven</artifactId>
 				<version>6.1.1</version>
-			    <!-- <configuration>
-					<failBuildOnCVSS>9</failBuildOnCVSS>
-				</configuration> -->
+			    <configuration>
+					<failBuildOnCVSS>8</failBuildOnCVSS>
+				</configuration>
 				<executions>
 					<execution>
 						<goals>
