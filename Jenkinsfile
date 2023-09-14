@@ -74,18 +74,18 @@ pipeline {
         }    
       }
     }
-  stage('SAST') {
-    steps {
-      container('slscan') {
-        //sh 'scan --type java,depscan --build'
+    stage('SAST') {
+      steps {
+        container('slscan') {
+          //sh 'scan --type java,depscan --build'
+        }
+      }
+      post {
+        success {
+          archiveArtifacts allowEmptyArchive: true, artifacts: 'reports/*', fingerprint: true, onlyIfSuccessful: true
+        }
       }
     }
-    post {
-      success {
-        archiveArtifacts allowEmptyArchive: true, artifacts: 'reports/*', fingerprint: true, onlyIfSuccessful: true
-      }
-    }
-  }
     stage('Package') {
       parallel {
         stage('Create Jarfile') {
@@ -121,7 +121,15 @@ pipeline {
           }
         } **/
       }
-    }    
+    }
+    stage('Scan k8s Deploy Code') {
+      steps {
+        container('docker-tools') {
+              sh 'kubesec scan deploy/dso-demo-deploy.yaml'
+        }
+      }
+    }
+
     stage('Deploy to Dev') {
       environment {
         AUTH_TOKEN = credentials('argocd-jenkins-deployer-token')
