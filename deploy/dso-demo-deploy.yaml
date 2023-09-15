@@ -24,27 +24,28 @@ spec:
         name: dso-demo
         ports:
         - containerPort: 8080
-          securityContext:
-            seccompProfile:
-              type: RuntimeDefault
-            capabilities:
-              drop:
-                - ALL
-            privileged: false
-            readOnlyRootFilesystem: true
-            allowPrivilegeEscalation: false
-            runAsNonRoot: true
-            runAsUser: 11000
-          resources:
-            requests:
-                cpu: "50m"
-                memory: "128Mi"
-            limits:
-                cpu: "250m"
-                memory: "512Mi"
-          volumeMounts:
-            name: tmp
+        securityContext:
+          seccompProfile:
+            type: RuntimeDefault
+          capabilities:
+            drop:
+              - ALL
+          privileged: false
+          readOnlyRootFilesystem: true
+          allowPrivilegeEscalation: false
+          runAsNonRoot: true
+          runAsUser: 11000
+        resources:
+          requests:
+              cpu: "50m"
+              memory: "128Mi"
+          limits:
+              cpu: "250m"
+              memory: "512Mi"
+        volumeMounts:
+          - name: tmp
             mountPath: /tmp
       volumes:
         - name: tmp
           emptyDir: {}
+status: {}
