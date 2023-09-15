@@ -5,6 +5,7 @@ metadata:
   labels:
     app: dso-demo
   name: dso-demo
+    seccomp.security.alpha.kubernetes.io/pod: "runtime/default"
 spec:
   replicas: 1
   selector:
@@ -18,7 +19,9 @@ spec:
         app: dso-demo
       name: dso-demo
       annotations:
-        seccomp.security.alpha.kubernetes.io/pod: "runtime/default"
+          vault.hashicorp.com/agent-inject: 'true'
+          vault.hashicorp.com/role: 'dso-demo'
+          vault.hashicorp.com/agent-inject-secret-database: 'secret/dso-demo/database'
     spec:
       serviceAccountName: dso-demo
       automountServiceAccountToken: false
