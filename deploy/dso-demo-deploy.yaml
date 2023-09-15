@@ -22,6 +22,9 @@ spec:
           vault.hashicorp.com/role: 'dso-demo'
           vault.hashicorp.com/agent-inject-secret-database: 'secret/dso-demo/database'
     spec:
+      securityContext:
+        seccompProfile:
+          type: RuntimeDefault
       serviceAccountName: dso-demo
       automountServiceAccountToken: false
       containers:
@@ -30,8 +33,6 @@ spec:
         ports:
         - containerPort: 8080
         securityContext:
-          seccompProfile:
-            type: RuntimeDefault
           capabilities:
             drop:
               - ALL
