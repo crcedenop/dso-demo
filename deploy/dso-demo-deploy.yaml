@@ -26,7 +26,6 @@ spec:
     spec:
       securityContext:
       serviceAccountName: dso-demo
-      automountServiceAccountToken: false
       containers:
       - image: crcedenp/dso-demo
         name: dso-demo
